@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Αποτελέσματα Αναζήτησης Εργασίας{% endblock %}
+{% block content %}
+  <h2>Αποτελέσματα Αναζήτησης Εργασίας για {{ kw }} στην {{ loc }}</h2>
+  {% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>{% endif %}
+      <ul>
+  {% for job in jobs %}
+
+    <li><a href="{{ job[1] }}" target="_blank"><strong>{{loop.index}}</strong> {{ job[0] }}</a></li>
+    
+  {% endfor %}
+  </ul>
+{% endblock content %}

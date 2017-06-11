@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Αναζήτηση Εργασίας{% endblock %}
+{% block content %}
+  <h2>Αναζήτηση Εργασίας</h2>
+  {% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>{% endif %}
+  <form action="" method="post" id="searchForm">
+    <dl>
+      <dt>Keyword:</dt>
+      <dd><input type="text" name="keyword" size="30" value="{{ request.form.keyword }}" required></dd>
+      <dt>Location:</dt>
+      <dd><input type="text" name="location" size="30" value="{{ request.form.location }}"></dd>
+      <dt>Τοποθεσία:</dt>
+        <dd>
+          <select name="listed-location" form="searchForm">
+            <option value="Αθήνα">Αθήνα</option>
+            <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
+          </select>
+        </dd>
+      <dt>Απόσταση:</dt>
+        <dd>
+          <select name="listed-distance" form="searchForm">
+            <option value="5">5 χλμ</option>
+            <option value="10">10 χλμ</option>
+          </select>
+        </dd>
+      <dt>Κατηγορία:</dt>
+        <dd>
+          <select name="listed-category" form="searchForm">
+            <option value="comp-sci">Πληροφορική</option>
+            <option value="economics">Οικονομικά</option>
+          </select>
+        </dd>
+      <dt>Τύπος απασχόλησης:</dt>
+      <dt>Eργασιακής Εμπειρία:</dt>
+      <dt>Εταιρεία:</dt>
+      <dt>Μηχανή αναζήτησης:</dt>
+    </dl>
+    <div class="actions"><input type="submit" value="Search"></div>
+  </form>
+{% endblock content %}
