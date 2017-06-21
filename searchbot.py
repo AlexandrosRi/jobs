@@ -12,9 +12,7 @@ from jobs.database import db_session
 
 
 fbBase = "https://graph.facebook.com/me/messages/?access_token="
-token = "EAALdO1loEXUBAA5zpoqn8jjaDI3ZAorlqPKrZBeOD38LTybLLdyZ"
-token += "CNh7l5SvPZBZCIKgM2KANqMgu5xc0VIjMSUnIKAGirIsnCbiA3hKHskHhcWfptlNOGO"
-token += "8TrQI3DEty9W7iTWTc5LRNYkFrsrNSiti3ZCxqN2AkZAYdflQWXMZCwZDZD"
+token = "token" (read local value)
 
 env = Environment(loader=PackageLoader('jobs', 'templates'))
 env.filters['jsonify'] = json.dumps
@@ -78,8 +76,8 @@ def webhook():
            # print(json.dumps(ab))
         except Exception as e:
             print(traceback.format_exc())  # something went wrong
-    elif request.method == 'GET':  # For the initial verification
-        if request.args.get('hub.verify_token') == '35cb23076a':
+    elif request.method == 'GET':  # For the initial verification (read local value)
+        if request.args.get('hub.verify_token') == 'token':
             return request.args.get('hub.challenge')
         return "Wrong Verify Token"
     return "Hello World"  # Not Really Necessary

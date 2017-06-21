@@ -1,5 +1,12 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/*
+__pycache__/
+__pycache__/__init__.cpython-36.pyc
+__pycache__/database.cpython-36.pyc
+__pycache__/models.cpython-36.pyc
+__pycache__/searches.cpython-36.pyc
+__pycache__/searchbot.cpython-36.pyc
+__pycache__/views.cpython-36.pyc
+token.txt
 *.py[cod]
 *$py.class
 

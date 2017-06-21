@@ -6,6 +6,9 @@ import itertools
 
 from jobs import app
 from jobs import searches
+from jobs import models
+from jobs.database import db_session
+
 
 @app.route('/', methods=['GET', 'POST'])
 def search():
@@ -33,11 +36,21 @@ def search():
 def apotelesmata(loc, kw):
     """Displays the search results."""
     error = None
-    jobs1 = searches.searchKariera(kw.replace(' ', '+'), loc.replace(' ', '+'))
-    jobs2 = searches.searchCareernet(kw.replace(' ', '+'))
-    jobs = itertools.chain(jobs1, jobs2)
+
+    sources = models.Source.query.all()
+    
+    jobs = []
+    for src in sources:
+        print("Fetching from: ")
+        print(src.name)
+        jobs = itertools.chain(jobs, searches.searchJobs(src, kw.replace(' ', '+'), loc.replace(' ', '+')))
+    #jobs1 = searches.searchKariera(kw.replace(' ', '+'), loc.replace(' ', '+'))
+    #jobs = searches.searchCareernet(kw.replace(' ', '+'))
+    #jobs = itertools.chain(jobs1, jobs2)
     return render_template('results.html',
                            error=error, loc=loc, kw=kw, jobs=jobs)
 
-# for i in range(len(jobsElem)):
-# 	print(jobs[i][0])
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()

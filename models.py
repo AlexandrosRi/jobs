@@ -13,7 +13,7 @@ class User(Base):
         self.username = username
         self.email = email
     """
-    
+
     def __repr__(self):
         return '<User %r>' % self.username
 
@@ -26,7 +26,10 @@ class Source(Base):
     queryVar = Column(String(120))
     locationVar = Column(String(120))
     pagerVar = Column(String(120))
-    
+    hrefTag = Column(String(120))
+    titleTag = Column(String(120))
+    pagTag = Column(String(120))
+    pagLength = Column(Integer)
     """
     def __init__(self, name, baseUrl, pagerVar, locationVar, queryVar):
         self.name = name

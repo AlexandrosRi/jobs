@@ -6,7 +6,7 @@ from jobs.models import User, Source
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\ralex\\dev\\jobs\\tmp\\test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite'  # read local value for sqlite
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '123456790'
 
@@ -19,3 +19,5 @@ admin.add_view(ModelView(Source, db.session))
 
 import jobs.views
 views.search
+
+import jobs.searchbot
