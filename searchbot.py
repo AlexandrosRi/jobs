@@ -18,7 +18,6 @@ env = Environment(loader=PackageLoader('jobs', 'templates'))
 env.filters['jsonify'] = json.dumps
 template = env.get_template('example.json')
 
-# https://github.com/hartleybrody/fb-messenger-bot/blob/master/app.py#L24
 
 @app.route('/webhook/701cfd22044c4fc194d1cf860f2a0c4', methods=['GET', 'POST'])
 def webhook():
