@@ -1,0 +1,44 @@
+{
+  "recipient":{
+    "id": "{{ sender }}"
+  },
+  "message": {
+    "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "list",
+            "top_element_style": "compact",
+            "elements": [
+                {% for p in page %}
+                {
+                    "title": "{{p.title}}",
+                    "subtitle": "{{p.site}}",
+                    "default_action": {
+                        "type": "web_url",
+                        "url": "{{p.url}}",
+                        "messenger_extensions": true,
+                        "webview_height_ratio": "tall",
+                        "fallback_url": "http://mscis.cs.aueb.gr/"
+                    },
+                    "buttons": [{
+                        "title": "See Job",
+                        "type": "web_url",
+                        "url": "{{p.url}}",
+                        "messenger_extensions": true,
+                        "webview_height_ratio": "tall",
+                        "fallback_url": "http://mscis.cs.aueb.gr/"                        
+                    }]                
+                }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ],
+             "buttons": [
+                {
+                    "title": "View More",
+                    "type": "postback",
+                    "payload": "payload"                        
+                }
+            ]  
+        }
+    }
+  }
+}
