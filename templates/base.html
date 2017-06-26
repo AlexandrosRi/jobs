@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <title>{% block title %}{% endblock %}   - My Webpage</title>
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2017 by <a href="https://twitter.com/alsrizos">Alexandros Rizos</a>
-        {% endblock %}
+    <div class="container">
+        {% block content %}{% endblock %}
+        <div id="footer" class="col-md-12">
+            <section class="row">
+            {% block footer %}
+            &copy; Copyright 2017 <a href="https://twitter.com/alsrizos">Alexandros Rizos</a>
+            {% endblock %}
+            </section>
+        </div>
     </div>
 </body>
 </html>

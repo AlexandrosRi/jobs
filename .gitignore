@@ -6,7 +6,9 @@ __pycache__/models.cpython-36.pyc
 __pycache__/searches.cpython-36.pyc
 __pycache__/searchbot.cpython-36.pyc
 __pycache__/views.cpython-36.pyc
+areas-matching.json
 token.txt
+config.py
 *.py[cod]
 *$py.class
 

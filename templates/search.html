@@ -3,38 +3,55 @@
 {% block content %}
   <h2>Αναζήτηση Εργασίας</h2>
   {% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>{% endif %}
+  <div class="col-md-6">
   <form action="" method="post" id="searchForm">
-    <dl>
-      <dt>Keyword:</dt>
-      <dd><input type="text" name="keyword" size="30" value="{{ request.form.keyword }}" required></dd>
-      <dt>Location:</dt>
-      <dd><input type="text" name="location" size="30" value="{{ request.form.location }}"></dd>
-      <dt>Τοποθεσία:</dt>
-        <dd>
-          <select name="listed-location" form="searchForm">
-            <option value="Αθήνα">Αθήνα</option>
-            <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
-          </select>
-        </dd>
-      <dt>Απόσταση:</dt>
-        <dd>
-          <select name="listed-distance" form="searchForm">
-            <option value="5">5 χλμ</option>
-            <option value="10">10 χλμ</option>
-          </select>
-        </dd>
-      <dt>Κατηγορία:</dt>
-        <dd>
-          <select name="listed-category" form="searchForm">
-            <option value="comp-sci">Πληροφορική</option>
-            <option value="economics">Οικονομικά</option>
-          </select>
-        </dd>
-      <dt>Τύπος απασχόλησης:</dt>
-      <dt>Eργασιακής Εμπειρία:</dt>
-      <dt>Εταιρεία:</dt>
-      <dt>Μηχανή αναζήτησης:</dt>
-    </dl>
-    <div class="actions"><input type="submit" value="Search"></div>
+    <div class="form-group">
+      <label for="kwrd">Όρος αναζήτησης:</label>
+      <input id="kwrd" type="text" name="keyword" size="30" value="{{ request.form.keyword }}" required placeholder="Λογιστής" class="form-control" >
+    </div>  
+    <div class="form-group">
+      <label for="loc">Τοποθεσία:</label>
+      <input id="loc" type="text" name="location" size="30" value="{{ request.form.location }}" placeholder="Αθήνα" class="form-control" >
+      <p class="help-block">*Δεν υποστηρίζεται σε όλες τις μηχανές</p>
+    </div>  
+    <div class="form-group">  
+      <label for="areas">Περιοχή:</label>
+      <select id="areas" name="listed-location" form="searchForm" class="form-control">
+        <option value="">Επιλέξτε περιοχή</option>
+        <option value="Αττική-Αθήνα">Αττική - Αθήνα</option>
+        <option value="Κεντρική-Μακεδονία-Θεσσαλονίκη">Κεντρική Μακεδονία - Θεσσαλονίκη</option>
+        <option value="Νότιο-Αιγαίο">Νότιο Αιγαίο</option>
+        <option value="Κρήτη">Κρήτη</option>
+        <option value="Δυτική-Ελλάδα">Δυτική Ελλάδα</option>
+        <option value="Στερεά-Ελλάδα">Στερεά Ελλάδα</option>
+        <option value="Θεσσαλία">Θεσσαλία</option>
+        <option value="Ανατολική-Μακεδονία-Θράκη">Ανατολική Μακεδονία - Θράκη</option>
+        <option value="Πελοπόννησος">Πελοπόννησος</option>
+        <option value="Ιόνια-Νησιά">Ιόνια Νησιά</option>
+        <option value="Ήπειρος">Ήπειρος</option>
+        <option value="Βόρειο-Αιγαίο">Βόρειο Αιγαίο</option>
+        <option value="Δυτική-Μακεδονία">Δυτική Μακεδονία</option>
+      </select>
+      <p class="help-block">*Δεν υποστηρίζεται σε όλες τις μηχανές</p>
+    </div>
+            <!-- areas
+Αττική-Αθήνα
+Κεντρική Μακεδονία - Θεσσαλονίκη
+Νότιο Αιγαίο
+Κρήτη
+Δυτική Ελλάδα
+Στερεά Ελλάδα
+Θεσσαλία
+Ανατολική Μακεδονία - Θράκη
+Πελοπόννησος
+Ιόνια Νησιά
+Ήπειρος
+Βόρειο Αιγαίο
+Δυτική Μακεδονία
+-->
+         
+      <button type="submit" class="btn btn-primary .btn-lg">Submit</button>
+    <!--div class="actions"><input type="submit" value="Search"></div-->
   </form>
+  </div>
 {% endblock content %}
